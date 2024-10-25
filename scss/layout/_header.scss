@@ -1,0 +1,19 @@
+header{
+    max-width : 90%;
+    margin : 0 auto;
+    display : flex;
+    color : black;
+    border : 1px solid black;
+    justify-content: space-between;
+    align-items: center;
+}
+.menu{
+    display : flex;
+    gap : 1rem;
+    list-style: none;
+    
+}
+li{
+    border-right: 1px solid black;
+    padding : 1rem;
+}
