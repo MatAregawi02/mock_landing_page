@@ -1,52 +1,54 @@
-// // const menu = ["Home","About","Contact"];
-// // //menu will be dynamically added to ul in html
-// // var i;
-// // // var list = '';
-// // var list = '';
-// // for (i = 0; i < menu.length; i++){
-// //     console.log(menu[i]);
-// //     list += `<li> <a class = "${menu[i]}" href = ""> ${menu[i]} </a> </li>`;
-  
-// // }
-// // // console.log(list);
-// // var ulElement = document.querySelector(".menu");
-// // ulElement.innerHTML = list;
+//first we must create an object that will contain the contents of our sections
 
-// // // console.log(ulElement);
-// // // var list = document.createElement("li");
-// // // var link = document.createElement("a");
-// // // ulElement.appendChild(list);
-// // // var ab = list.appendChild(link);
-// // // console.log(ab);
+let contentObj = {
+    Home : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
 
-// var contentObj = {
-//     home : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    About :"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
 
-//     about :"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+    Contact : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. ",
 
-//     contact : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry.  Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-// }
+     Help : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and typesetting industry.   "
+}
+let list = "";
+let sec = "";
+// let title = "";
+let counter = 1;
 
-// var main_content = document.querySelector(".main-content");
+for (const menuItem of Object.keys(contentObj)){ //the keys are li elements
+    list += `<li> <a href = "" id = "${menuItem}" class = "link">${menuItem} </a> </li>`;
+}
+document.querySelector(".menu").innerHTML = list;
 
-// var list = '';
-// var section = '';
+for (const sectionItem of Object.entries(contentObj)){
+    sec += `<section class = "section-${counter}" id = "${sectionItem[0]}sec"><h2 class = "title">${sectionItem[0]}</h2> <p> ${sectionItem[1]} </p></section>`;
+    counter++;
+}
+document.querySelector(".main-content").innerHTML = sec;
 
-// // for (const content of Object.values(contentObj)){
-// //     section += `<section> ${content} </section>`
-// // }
+var links = document.querySelectorAll(".link");
 
-// for (const cont of Object.entries(contentObj)){
-//     list += `<li> <a class = "${cont[0]}" href = ""> ${cont[0]} </a> </li>`;
-//     section += `<section class = "${cont[0]}"> ${cont[1]} </section>`;
-// }
 
-// var ulElement = document.querySelector(".menu");
-// ulElement.innerHTML = list;
-// main_content.innerHTML = section;
+links.forEach(function(link){
+   
+    link.addEventListener("click", function(event){
+        event.preventDefault();
+        links.forEach(function(lin){
 
-// var body = document.querySelector("body");
-// var home_content = document.querySelector(".home");
-// var click = ulElement.addEventListener('click', function(elo){
-//    home_content.style.backgroundColor = "blue";
-// });
+            lin.classList.remove("active");
+        });
+        // link.classList.add("active");
+        var touchedLink = event.target; //this is an object
+        touchedLink.classList.add("active");
+        const idName = `${this.id}sec`; //this refers to the current object
+        var secId = document.getElementById(idName); 
+        var s1Cord = secId.getBoundingClientRect();
+
+        window.scrollTo(
+            {
+                left : s1Cord.left + window.pageXOffset,
+                top : s1Cord.top + window.pageYOffset,
+                behavior : "smooth"
+            }
+        )
+    })
+})
